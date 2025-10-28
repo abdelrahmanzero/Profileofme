@@ -98,7 +98,7 @@
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 22px; /* Reduced from 28px */
             font-weight: 700;
             background: linear-gradient(45deg, #00f3ff, #b537ff);
             -webkit-background-clip: text;
@@ -200,7 +200,8 @@
 
         .hero-photo {
             width: 100%;
-            max-height: 500px;
+            max-width: 600px; /* Added fixed max-width */
+            max-height: 400px; /* Reduced from 500px */
             object-fit: cover;
             border-radius: 20px;
             border: 3px solid #00f3ff;
@@ -406,6 +407,8 @@
             font-weight: 600;
             text-shadow: 0 0 20px rgba(181, 55, 255, 0.6);
         }
+
+        .section-title {
             font-size: 56px;
             color: #00f3ff;
             text-align: center;
@@ -413,38 +416,6 @@
             text-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
             position: relative;
             display: inline-block;
-        }
-
-        /* Section Divider */
-        .section-divider {
-            width: 100%;
-            max-width: 1200px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #00f3ff, transparent);
-            margin: 40px auto;
-            position: relative;
-        }
-
-        .section-divider::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 10px;
-            height: 10px;
-            background: #00f3ff;
-            border-radius: 50%;
-            box-shadow: 0 0 20px #00f3ff;
-        }
-
-        .subsection-title {
-            font-size: 32px;
-            color: #b537ff;
-            text-align: center;
-            margin: 40px 0 30px 0;
-            font-weight: 600;
-            text-shadow: 0 0 20px rgba(181, 55, 255, 0.6);
         }
 
         .section-title::after {
@@ -507,6 +478,81 @@
 
         .achievement-badge:hover .badge-icon {
             transform: rotateY(360deg) scale(1.2);
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .skill-category {
+            background: rgba(15, 12, 41, 0.4);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(15px);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00f3ff, #b537ff, #00ff88, #ffd700);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .skill-category:hover::before {
+            opacity: 1;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-15px);
+            box-shadow: 
+                0 15px 40px rgba(0, 243, 255, 0.4),
+                0 0 60px rgba(181, 55, 255, 0.3);
+        }
+
+        .skill-category-title {
+            font-size: 22px;
+            color: #00f3ff;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            color: #b0b0ff;
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .skill-item::before {
+            content: '🚀';
+            position: absolute;
+            left: 0;
+            top: 0;
         }
 
         /* Contact Form */
@@ -663,10 +709,11 @@
         <div class="logo">🚀 Abdelrahman Mostafa</div>
         <div class="nav-links">
             <a href="#home" class="space-btn" data-color="#00f3ff">Home</a>
+            <a href="#academics" class="space-btn" data-color="#ffd700">Academics</a>
             <a href="#projects" class="space-btn" data-color="#b537ff">Projects</a>
             <a href="#achievements" class="space-btn" data-color="#00ff88">Achievements</a>
-            <a href="#academics" class="space-btn" data-color="#ffd700">Academics</a>
             <a href="#activities" class="space-btn" data-color="#ff006e">Activities</a>
+            <a href="#skills" class="space-btn" data-color="#00ff88">Skills</a>
             <a href="#contact" class="space-btn" data-color="#b537ff">Contact</a>
         </div>
     </nav>
@@ -739,6 +786,14 @@
             <!-- Projects & Startups Subsection -->
             <h3 class="subsection-title">💡 Projects & Startups</h3>
             <div class="content-grid">
+                <div class="card">
+                    <div class="card-icon">🏨</div>
+                    <h3 class="card-title">Nova Terra</h3>
+                    <p class="card-text">
+                        Revolutionizing space tourism with innovative smart flying hotels concept.
+                        <a href="https://github.com/Abdulaziz-hani/Dk-Aliens-Application" target="_blank" style="color: #ffffff;">View on GitHub →</a>
+                    </p>
+                </div>
                 <div class="card">
                     <div class="card-icon">🤖</div>
                     <h3 class="card-title">AERO Start Robot</h3>
@@ -816,6 +871,40 @@
                     <div class="card-icon">❄️</div>
                     <h3 class="card-title">IYRC STEM Winter Program</h3>
                     <p class="card-text">Studying STEM fields with professors at Stanford University</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">💼 Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Communication & Presentation</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Creative Writing</li>
+                        <li class="skill-item">Presentation Skills</li>
+                        <li class="skill-item">Presentation Design</li>
+                        <li class="skill-item">Public Speaking</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Technical & Analytical</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Data Analysis</li>
+                        <li class="skill-item">Programming</li>
+                        <li class="skill-item">LaTeX</li>
+                        <li class="skill-item">Research Methodology</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Scientific Research</h3>
+                    <ul class="skill-list">
+                        <li class="skill-item">Astronomy & Astrophysics</li>
+                        <li class="skill-item">Robotics & AI</li>
+                        <li class="skill-item">Academic Writing</li>
+                        <li class="skill-item">Experimental Design</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -954,7 +1043,7 @@
         });
 
         // Card 3D Tilt Effect
-        document.querySelectorAll('.card').forEach(card => {
+        document.querySelectorAll('.card, .skill-category').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
